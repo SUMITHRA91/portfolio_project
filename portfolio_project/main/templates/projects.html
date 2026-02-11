@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects - Sumithra</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #6b0f1a, #1a0004 70%);
+            color: white;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 80px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 0, 80, 0.2);
+            box-shadow: 0 0 15px #ff004c;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 80px;
+        }
+
+        .projects h1 {
+            font-size: 45px;
+            margin-bottom: 40px;
+            color: #ff4d6d;
+            text-shadow: 0 0 15px #ff004c;
+        }
+
+        .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .card {
+            width: 320px;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(255,0,80,0.3);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 0 50px rgba(255,0,80,0.7);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .category {
+            font-size: 13px;
+            background: #ff004c;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+
+        .github {
+            background: black;
+            color: white;
+        }
+
+        .demo {
+            background: linear-gradient(45deg, #ff004c, #ff4d6d);
+            color: white;
+        }
+
+        .buttons a:hover {
+            box-shadow: 0 0 15px #ff004c;
+        }
+
+        .no-project {
+            color: #ccc;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div>Sumithra</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contact/">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="projects">
+    <h1>My Projects</h1>
+
+    <div class="project-container">
+
+        {% if projects %}
+            {% for project in projects %}
+            <div class="card">
+
+                {% if project.image %}
+                    <img src="{{ project.image.url }}">
+                {% endif %}
+
+                <div class="category">{{ project.category }}</div>
+
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+
+                <div class="buttons">
+
+                    {% if project.github_link %}
+                        <a href="{{ project.github_link }}" target="_blank" class="github">GitHub</a>
+                    {% endif %}
+
+                    {% if project.demo_link %}
+                        <a href="{{ project.demo_link }}" target="_blank" class="demo">Live Demo</a>
+                    {% endif %}
+
+                </div>
+
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-project">No projects added yet. Add from Admin panel.</p>
+        {% endif %}
+
+    </div>
+</section>
+
+</body>
+</html>

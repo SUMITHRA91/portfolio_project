@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact - Sumithra</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #6b0f1a, #1a0004 70%);
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 25px 80px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 0, 80, 0.2);
+            box-shadow: 0 0 15px #ff004c;
+        }
+
+        .contact {
+            padding: 100px 80px;
+            max-width: 600px;
+        }
+
+        .contact h1 {
+            color: #ff4d6d;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px #ff004c;
+        }
+
+        .success-message {
+            color: #00ffcc;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        form {
+            margin-bottom: 40px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(45deg, #ff004c, #ff4d6d);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            box-shadow: 0 0 20px #ff004c;
+            transform: scale(1.05);
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255,0,80,0.3);
+        }
+
+        .contact-info h2 {
+            margin-bottom: 20px;
+            color: #ff758f;
+        }
+
+        .contact-info a {
+            display: block;
+            color: #ddd;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #ff4d6d;
+            text-shadow: 0 0 10px #ff004c;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div>Sumithra</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contact/">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="contact">
+    <h1>Contact Me</h1>
+
+    <!-- SUCCESS MESSAGE -->
+    {% if success %}
+        <p class="success-message">Message sent successfully! ✅</p>
+    {% endif %}
+
+    <!-- FORM -->
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea rows="5" name="message" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <!-- CONTACT INFO -->
+    <div class="contact-info">
+        <h2>Connect With Me</h2>
+
+        <a href="mailto:sumithrachinnu402@gmail.com">
+            📧 Email: sumithrachinnu402@gmail.com
+        </a>
+
+        <a href="https://www.linkedin.com/in/sumithra-c-49bba3295" target="_blank">
+            🔗 LinkedIn: Sumithra C
+        </a>
+
+        <a href="https://github.com/SUMITHRA91" target="_blank">
+            💻 GitHub: SUMITHRA91
+        </a>
+
+    </div>
+
+</section>
+
+</body>
+</html>
+

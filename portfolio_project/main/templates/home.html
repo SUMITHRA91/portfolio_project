@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Sumithra</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #6b0f1a, #1a0004 70%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,0,80,0.4), transparent 70%);
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,0,80,0.3), transparent 70%);
+            bottom: -200px;
+            right: -200px;
+            z-index: -1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 80px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 0, 80, 0.2);
+            box-shadow: 0 0 15px #ff004c;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 80px;
+        }
+
+        .hero-text {
+            max-width: 500px;
+        }
+
+        .hero-text h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hero-text span {
+            color: #ff4d6d;
+            text-shadow: 0 0 15px #ff004c;
+        }
+
+        .hero-text p {
+            margin-bottom: 25px;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(45deg, #ff004c, #ff4d6d);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 20px #ff004c;
+            transform: scale(1.05);
+        }
+
+        .cv-btn {
+            background: black;
+        }
+
+        .hero-image {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(255,0,80,0.4);
+        }
+
+        .hero-image img {
+            width: 300px;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-image {
+                margin-top: 40px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Sumithra C</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contact/">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Hi, I'm <span>Sumithra C</span></h1>
+        <p>
+            Full Stack Developer building secure, scalable and responsive 
+            web applications using Django and modern frontend technologies.
+        </p>
+
+        <div class="buttons">
+            <a href="/contact/" class="btn">Hire Me</a>
+
+            <!-- Download CV Button -->
+            <a href="{% static 'files/cv.pdf' %}" download class="btn cv-btn">
+                Download CV
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    </div>
+</section>
+
+</body>
+</html>

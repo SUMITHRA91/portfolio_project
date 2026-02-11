@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About - Sumithra</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #6b0f1a, #1a0004 70%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,0,80,0.4), transparent 70%);
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,0,80,0.3), transparent 70%);
+            bottom: -200px;
+            right: -200px;
+            z-index: -1;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 80px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 0, 80, 0.2);
+            box-shadow: 0 0 15px #ff004c;
+        }
+
+        /* Main Section */
+        .container {
+            padding: 100px 80px;
+            max-width: 1000px;
+        }
+
+        h1 {
+            font-size: 45px;
+            margin-bottom: 40px;
+            color: #ff4d6d;
+            text-shadow: 0 0 15px #ff004c;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff758f;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255,0,80,0.4);
+            margin-bottom: 40px;
+        }
+
+        .card p {
+            line-height: 1.7;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .skill-list, .interest-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill, .interest {
+            padding: 10px 20px;
+            background: rgba(255,0,80,0.2);
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(255,0,80,0.5);
+            transition: 0.3s;
+        }
+
+        .skill:hover, .interest:hover {
+            background: #ff004c;
+            box-shadow: 0 0 20px #ff004c;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Sumithra</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/contact/">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <h1>About Me</h1>
+
+    <!-- Profile Summary -->
+    <div class="card">
+        <p>
+            I am a passionate Full Stack Developer with strong expertise in 
+            Django, HTML, CSS, JavaScript and modern web technologies.
+        </p>
+
+        <p>
+            I enjoy building scalable, secure and responsive web applications
+            with clean UI design and efficient backend logic.
+        </p>
+
+        <p>
+            My goal is to create impactful digital solutions that solve real-world problems.
+        </p>
+    </div>
+
+    <!-- Education -->
+    <div class="card">
+        <h2>Education</h2>
+        <p><strong>Bachelor of Engineering (B.E)</strong></p>
+        <p>Computer Science & Engineering</p>
+        <p>2022 - 2026</p>
+    </div>
+
+    <!-- Skills -->
+    <div class="card">
+        <h2>Technical Skills</h2>
+
+        <div class="skill-list">
+            <div class="skill">Python</div>
+            <div class="skill">Django</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">React (Basic)</div>
+            <div class="skill">SQL</div>
+            <div class="skill">Git & GitHub</div>
+        </div>
+    </div>
+
+    <!-- Interests -->
+    <div class="card">
+        <h2>Interests</h2>
+
+        <div class="interest-list">
+            <div class="interest">Web Development</div>
+            <div class="interest">UI/UX Design</div>
+            <div class="interest">Artificial Intelligence</div>
+            <div class="interest">Problem Solving</div>
+            <div class="interest">Learning New Technologies</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
