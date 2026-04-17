@@ -1,182 +1,544 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Projects - Sumithra</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Sumithra C</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Outfit:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
     <style>
+        :root {
+            --bg-color: #FDFBF7;
+            --text-color: #3E3A35;
+            --clay: #EBE5DB;
+            --sunlight: #F5D0B5;
+            --stone-light: #8A837A;
+            --shadow-soft: 0 10px 30px -15px rgba(62, 58, 53, 0.1);
+            --card-radius: 2rem;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
         }
 
         body {
-            background: radial-gradient(circle at top, #6b0f1a, #1a0004 70%);
-            color: white;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'DM Sans', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
         }
 
-        /* Navbar */
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: 'Outfit', system-ui, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 80px;
+            padding: 2.5rem 5rem;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-color);
         }
 
         nav ul {
             display: flex;
-            gap: 30px;
+            gap: 2.5rem;
             list-style: none;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            transition: 0.3s;
+            color: rgba(62, 58, 53, 0.7);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
         }
 
-        nav ul li a:hover {
-            background: rgba(255, 0, 80, 0.2);
-            box-shadow: 0 0 15px #ff004c;
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--text-color);
         }
 
-        /* Projects Section */
-        .projects {
-            padding: 100px 80px;
-        }
-
-        .projects h1 {
-            font-size: 45px;
-            margin-bottom: 40px;
-            color: #ff4d6d;
-            text-shadow: 0 0 15px #ff004c;
-        }
-
-        .project-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .card {
-            width: 320px;
-            padding: 20px;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 0 30px rgba(255,0,80,0.3);
-            transition: 0.4s;
-        }
-
-        .card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 0 50px rgba(255,0,80,0.7);
-        }
-
-        .card img {
+        nav ul li a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
             width: 100%;
-            border-radius: 15px;
-            margin-bottom: 15px;
+            height: 1px;
+            background-color: var(--text-color);
         }
 
-        .category {
-            font-size: 13px;
-            background: #ff004c;
-            padding: 5px 12px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 10px;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .buttons {
-            margin-top: 15px;
-        }
-
-        .buttons a {
+        .nav-btn {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
             text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-right: 10px;
-            transition: 0.3s;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
-        .github {
-            background: black;
-            color: white;
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
         }
 
-        .demo {
-            background: linear-gradient(45deg, #ff004c, #ff4d6d);
-            color: white;
+        .nav-btn-secondary {
+            color: var(--text-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--text-color);
+            transition: all 0.3s ease;
         }
 
-        .buttons a:hover {
-            box-shadow: 0 0 15px #ff004c;
+        .nav-btn-secondary:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
         }
 
-        .no-project {
-            color: #ccc;
-            margin-top: 20px;
+        .projects-section {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 4rem 5rem 6rem;
+            background-color: var(--clay);
+            border-top-left-radius: 3rem;
+            border-top-right-radius: 3rem;
+            min-height: calc(100vh - 120px);
         }
 
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid rgba(62, 58, 53, 0.1);
+            padding-bottom: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h1 {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+
+        .project-card:nth-child(even) {
+            /* optional alternating layout if desired, kept simple for now */
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background-color: var(--sunlight);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-meta {
+            font-size: 0.875rem;
+            color: rgba(62, 58, 53, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 3.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-description {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: rgba(62, 58, 53, 0.8);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .link-read {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-weight: 500;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid rgba(62, 58, 53, 0.2);
+            transition: all 0.3s;
+        }
+
+        .link-read:hover {
+            border-bottom-color: var(--text-color);
+        }
+
+        .link-read svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+
+        .link-read:hover svg {
+            transform: translate(4px, -4px);
+        }
+
+        .no-projects {
+            font-size: 1.25rem;
+            color: rgba(62, 58, 53, 0.6);
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .projects-section {
+                padding: 3rem 2rem;
+                border-radius: 2rem 2rem 0 0;
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-bottom: 4rem;
+            }
+
+            .project-title {
+                font-size: 2.5rem;
+            }
+
+            .section-header h1 {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-<nav>
-    <div>Sumithra</div>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/projects/">Projects</a></li>
-        <li><a href="/contact/">Contact</a></li>
-    </ul>
-</nav>
+    <nav>
+        <a href="/" class="logo">Sumithra C</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/experience/">Experience</a></li>
+            <li><a href="/projects/" class="active">Projects</a></li>
+            <li><a href="/contact/">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="{% static 'files/cv.pdf' %}" download class="nav-btn-secondary">Resume</a>
+            <a href="/contact/" class="nav-btn">Start a conversation</a>
+        </div>
+    </nav>
 
-<section class="projects">
-    <h1>My Projects</h1>
+    <section class="projects-section">
+        <div class="section-header">
+            <h1>Recent Explorations</h1>
+        </div>
 
-    <div class="project-container">
-
-        {% if projects %}
-            {% for project in projects %}
-            <div class="card">
-
-                {% if project.image %}
-                    <img src="{{ project.image.url }}">
-                {% endif %}
-
-                <div class="category">{{ project.category }}</div>
-
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.description }}</p>
-
-                <div class="buttons">
-
-                    {% if project.github_link %}
-                        <a href="{{ project.github_link }}" target="_blank" class="github">GitHub</a>
-                    {% endif %}
-
-                    {% if project.demo_link %}
-                        <a href="{{ project.demo_link }}" target="_blank" class="demo">Live Demo</a>
-                    {% endif %}
-
-                </div>
-
+        <!-- Project 1: AI Second Brain -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop"
+                    alt="AI Second Brain">
             </div>
-            {% endfor %}
-        {% else %}
-            <p class="no-project">No projects added yet. Add from Admin panel.</p>
-        {% endif %}
+            <div class="project-content">
+                <span class="project-meta">2024 &middot; ARTIFICIAL INTELLIGENCE</span>
+                <h3 class="project-title" style="font-size: 2.75rem;">AI Second Brain</h3>
+                <p class="project-description" style="font-size: 1.125rem;">
+                    Built an AI-powered personal assistant for task management and knowledge retrieval using NLP
+                    concepts. Implemented intelligent note organization and quick search functionality, within a deeply
+                    user-friendly interface.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="link-read">
+                        Live Demo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/SUMITHRA91/ai-second-brain" target="_blank" class="link-read">
+                        GitHub Repo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-    </div>
-</section>
+        <!-- Project 2: Helmet Detection -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1558222218-b7b54eede3f3?q=80&w=800&auto=format&fit=crop"
+                    alt="Helmet Detection">
+            </div>
+            <div class="project-content">
+                <span class="project-meta">2024 &middot; COMPUTER VISION</span>
+                <h3 class="project-title" style="font-size: 2.75rem;">Helmet Detection System</h3>
+                <p class="project-description" style="font-size: 1.125rem;">
+                    Developed a robust computer vision model to detect helmet usage using image processing techniques in
+                    Python frameworks. Aimed at improving real-world road safety and enforcing traffic regulations via
+                    real-time detection.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="link-read">
+                        Live Demo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/SUMITHRA91/helmet-detection" target="_blank" class="link-read">
+                        GitHub Repo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3: Job Recommendation -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=800&auto=format&fit=crop"
+                    alt="Job Recommendation">
+            </div>
+            <div class="project-content">
+                <span class="project-meta">2023 &middot; BACKEND DEVELOPMENT</span>
+                <h3 class="project-title" style="font-size: 2.75rem;">Job Recommendation</h3>
+                <p class="project-description" style="font-size: 1.125rem;">
+                    Built a recommendation engine utilizing Python and filtering/matching algorithms to accurately
+                    suggest optimal jobs based on unique user skills and market preferences.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="link-read">
+                        Live Demo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/SUMITHRA91" target="_blank" class="link-read">
+                        GitHub Repo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4: Student Loan System -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop"
+                    alt="Student Loan Sys">
+            </div>
+            <div class="project-content">
+                <span class="project-meta">2023 &middot; ALGORITHMS</span>
+                <h3 class="project-title" style="font-size: 2.75rem;">Student Loan System</h3>
+                <p class="project-description" style="font-size: 1.125rem;">
+                    Developed a functional system engineered to recommend suitable educational financing and loan
+                    options based on dynamic eligibility parameters utilizing rule-based matching constraints.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="link-read">
+                        Live Demo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/SUMITHRA91" target="_blank" class="link-read">
+                        GitHub Repo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 5: Healthcare System -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="{% static 'images/healthcare_project.png' %}"
+                    alt="VitalAI Healthcare System">
+            </div>
+            <div class="project-content">
+                <span class="project-meta">2023 &middot; FULL STACK</span>
+                <h3 class="project-title" style="font-size: 2.75rem;">Healthcare System</h3>
+                <p class="project-description" style="font-size: 1.125rem;">
+                    Designed an accessible platform to suggest and route healthcare services based directly on symptoms.
+                    Merged foundational AI logic analysis with a crisp, responsive patient-facing UI.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="link-read">
+                        Live Demo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/SUMITHRA91/smart_healthcare_project" target="_blank" class="link-read">
+                        GitHub Repo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 6: Women Safety App -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="{% static 'images/women_safety_project.png' %}"
+                    alt="Women Safety App Mockup">
+            </div>
+            <div class="project-content">
+                <span class="project-meta">2022 &middot; MOBILE / WEB APP</span>
+                <h3 class="project-title" style="font-size: 2.75rem;">Women Safety App</h3>
+                <p class="project-description" style="font-size: 1.125rem;">
+                    Developed a full-stack Django safety network featuring push SOS alerts, an emergency contact mapping
+                    system, automated email broadcasting, and location-based assistance.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="link-read">
+                        Live Demo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/SUMITHRA91" target="_blank" class="link-read">
+                        GitHub Repo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 7: Golf Charity -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="{% static 'images/golf_project.png' %}"
+                    alt="Birdie for Good Golf Platform">
+            </div>
+            <div class="project-content">
+                <span class="project-meta">2022 &middot; WEB SYSTEM</span>
+                <h3 class="project-title" style="font-size: 2.75rem;">Golf Charity Platform</h3>
+                <p class="project-description" style="font-size: 1.125rem;">
+                    Architected and deployed a clean, responsive Django event platform. Features seamless user
+                    registration, ticketing systems, dynamic charity listings, and financial tracking logic.
+                </p>
+                <div class="project-links">
+                    <a href="https://sumithra-c.onrender.com/" target="_blank" class="link-read">
+                        Live Demo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/SUMITHRA91" target="_blank" class="link-read">
+                        GitHub Repo
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
 
 </body>
+
 </html>

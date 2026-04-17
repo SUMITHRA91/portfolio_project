@@ -1,0 +1,389 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Sumithra C</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Outfit:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #FDFBF7;
+            --text-color: #3E3A35;
+            --clay: #EBE5DB;
+            --sunlight: #F5D0B5;
+            --stone-light: #8A837A;
+            --shadow-soft: 0 10px 30px -15px rgba(62, 58, 53, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'DM Sans', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: 'Outfit', system-ui, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 5rem;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgba(62, 58, 53, 0.7);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--text-color);
+        }
+
+        nav ul li a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 1px;
+            background-color: var(--text-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .nav-btn-secondary {
+            color: var(--text-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn-secondary:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        /* Experience Layout */
+        .experience-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 5rem 6rem;
+        }
+
+        .section-header {
+            border-bottom: 1px solid rgba(62, 58, 53, 0.1);
+            padding-bottom: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h1 {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+
+        .resume-block {
+            margin-bottom: 5rem;
+        }
+
+        .resume-block h2 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .resume-item {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: start;
+        }
+
+        .resume-meta {
+            font-size: 0.95rem;
+            color: rgba(62, 58, 53, 0.6);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .resume-details h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-subtitle {
+            font-size: 1.05rem;
+            color: rgba(62, 58, 53, 0.8);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .resume-details p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: rgba(62, 58, 53, 0.8);
+        }
+
+        .resume-details ul {
+            margin-top: 1rem;
+            margin-left: 1.5rem;
+            color: rgba(62, 58, 53, 0.8);
+            line-height: 1.6;
+        }
+
+        .resume-details ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: rgba(62, 58, 53, 0.1);
+            margin: 4rem 0;
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .experience-section {
+                padding: 2rem 2rem 4rem;
+            }
+
+            .resume-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .resume-meta {
+                margin-bottom: 1rem;
+            }
+
+            .section-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/" class="logo">Sumithra C</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/experience/" class="active">Experience</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/contact/">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="{% static 'files/cv.pdf' %}" download class="nav-btn-secondary">Resume</a>
+            <a href="/contact/" class="nav-btn">Start a conversation</a>
+        </div>
+    </nav>
+
+    <section class="experience-section">
+        <div class="section-header">
+            <h1>Experience & Background</h1>
+        </div>
+
+        <div class="resume-block">
+            <h2>Internships & Experience</h2>
+
+            <div class="resume-item">
+                <div class="resume-meta">2026 - Present</div>
+                <div class="resume-details">
+                    <h3>AI/ML Intern</h3>
+                    <div class="resume-subtitle">Employability.life</div>
+                    <p>Gained practical exposure developing AI structures and analyzing Machine Learning models.</p>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-meta">2026</div>
+                <div class="resume-details">
+                    <h3>Software Engineering Virtual Internship</h3>
+                    <div class="resume-subtitle">JPMorgan Chase & Co.</div>
+                    <p>Completed practical software engineering simulations focusing on system design and financial data
+                        integrations.</p>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-meta">07/2024 – 09/2024</div>
+                <div class="resume-details">
+                    <h3>AICTE Virtual Internship</h3>
+                    <div class="resume-subtitle">Supported by Zscaler</div>
+                    <p>Completed networking-focused internship with exposure to cloud security and SD-WAN concepts.</p>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-meta">2025</div>
+                <div class="resume-details">
+                    <h3>Cybersecurity Analyst Job Simulation</h3>
+                    <div class="resume-subtitle">Tata & Forage</div>
+                    <p>Performed simulated cybersecurity risk assessments and threat analysis tasks.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="resume-block">
+            <h2>Education & Certifications</h2>
+
+            <div class="resume-item">
+                <div class="resume-meta">2023 - 2027</div>
+                <div class="resume-details">
+                    <h3>B.E in Information Science & Engineering</h3>
+                    <div class="resume-subtitle">PES College of Engineering, Mandya</div>
+                    <p><strong>Key Coursework:</strong> Data Structures & Algorithms, Database Management, Operating
+                        Systems, Web Technologies.</p>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-meta">Certification</div>
+                <div class="resume-details">
+                    <h3>Data Structures and Algorithms (DSA)</h3>
+                    <div class="resume-subtitle">Infosys Springboard</div>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-meta">Certification</div>
+                <div class="resume-details">
+                    <h3>ETL and Data Pipelines with Shell, Airflow & Kafka</h3>
+                    <div class="resume-subtitle">Coursera</div>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-meta">Certification</div>
+                <div class="resume-details">
+                    <h3>The Bits and Bytes of Computer Networking</h3>
+                    <div class="resume-subtitle">Google (Coursera)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="resume-block">
+            <h2>Hackathons & Extracurriculars</h2>
+
+            <div class="resume-item">
+                <div class="resume-meta">12/2025</div>
+                <div class="resume-details">
+                    <h3>VIBE-A-THON</h3>
+                    <div class="resume-subtitle">PES College of Engineering, Mandya</div>
+                    <p>Participated in a technical innovation-focused development event.</p>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-meta">2025</div>
+                <div class="resume-details">
+                    <h3>Hackathon Participations</h3>
+                    <div class="resume-subtitle">Adobe India · Flipkart · Tata Imagination Challenge</div>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-meta">Ongoing</div>
+                <div class="resume-details">
+                    <h3>Competitive Programming</h3>
+                    <div class="resume-subtitle">HackerRank & GeeksforGeeks</div>
+                    <p>Solved 100+ Data Structures and Algorithms (DSA) problems.</p>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-meta">Academic</div>
+                <div class="resume-details">
+                    <h3>IET Coding Club</h3>
+                    <div class="resume-subtitle">Active Member · PES College of Engineering</div>
+                    <p>Participated in multiple coding contests and attended workshops on AI and Data Science.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>
